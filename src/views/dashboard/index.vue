@@ -5,7 +5,7 @@
       <div>
         <div class="fl headL">
           <div class="headImg">
-            <img v-imageerror="require('@/assets/common/head.jpg')" :src="userInfo.staffPhoto">
+            <img v-imageerror="require('@/assets/common/p1.jpg')" :src="userInfo.staffPhoto">
           </div>
           <div class="headInfoTip">
             <p class="firstChild">早安，{{ userInfo.username }}，祝你开心每一天！</p>
@@ -35,28 +35,28 @@
               <ul class="noticeList">
                 <li>
                   <div class="item">
-                    <img src="@/assets/common/img.jpeg" alt="">
+                    <img src="@/assets/common/4.jpg" alt="">
                     <div>
-                      <p><span class="col">朱继柳</span> 发布了 第1期“传智大讲堂”互动讨论获奖名单公布</p>
-                      <p>2018-07-21 15:21:38</p>
+                      <p><span class="col">五条悟</span>发布了 第1期“传智大讲堂”互动讨论获奖名单公布</p>
+                      <p>2022-08-27 15:21:38</p>
                     </div>
                   </div>
                 </li>
                 <li>
                   <div class="item">
-                    <img src="@/assets/common/img.jpeg" alt="">
+                    <img src="@/assets/common/lm.jpg" alt="">
                     <div>
-                      <p><span class="col">朱继柳</span> 发布了 第2期“传智大讲堂”互动讨论获奖名单公布</p>
-                      <p>2018-07-21 15:21:38</p>
+                      <p><span class="col">越前龙马</span>获取了U17全国大赛冠军</p>
+                      <p>2022-07-28 15:21:38</p>
                     </div>
                   </div>
                 </li>
                 <li>
                   <div class="item">
-                    <img src="@/assets/common/img.jpeg" alt="">
+                    <img src="@/assets/common/p3.jpg" alt="">
                     <div>
-                      <p><span class="col">朱继柳</span> 发布了 第3期“传智大讲堂”互动讨论获奖名单公布</p>
-                      <p>2018-07-21 15:21:38</p>
+                      <p><span class="col">越前龙雅</span>美国队bug的般的存在</p>
+                      <p>2022-08-27 15:21:38</p>
                     </div>
                   </div>
                 </li>

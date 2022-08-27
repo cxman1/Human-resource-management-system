@@ -26,11 +26,11 @@
               首页
             </el-dropdown-item>
           </router-link>
-          <a target="_blank" href="https://gitee.com/shuiruohanyu/hrsaas111">
+          <a target="_blank" href="https://gitee.com/chenxicom/hr_-sass.git">
             <el-dropdown-item>项目地址</el-dropdown-item>
           </a>
           <el-dropdown-item divided @click.native="logout">
-            <span style="display:block;">退出登入</span></span>
+            <span style="display:block;">退出登入</span>
           </el-dropdown-item>
         </el-dropdown-menu>
       </el-dropdown>
@@ -50,7 +50,7 @@ export default {
     return {
       // 源代码   => 编译 => vue-cli来控制  => 浏览器
       // 当相对图片地址不确定的时候 需要用requrie来包裹
-      defaultImg: require('@/assets/common/head.jpg') // 相当于将图片转化成了变量 编译的时候 会将图片的新地址进行赋值
+      defaultImg: require('@/assets/common/p1.jpg') // 相当于将图片转化成了变量 编译的时候 会将图片的新地址进行赋值
     }
   },
   computed: {
