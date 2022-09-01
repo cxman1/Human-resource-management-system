@@ -4,7 +4,7 @@
 
       <div class="title-container">
         <h3 class="title">
-          <img src="@/assets/common/login-logo.png" alt="">
+          <img src="@/assets/common/p12.png" alt="">
         </h3>
       </div>
 
@@ -241,11 +241,16 @@ $light_gray:#eee;
     position: relative;
 
     .title {
-      font-size: 26px;
-      color: $light_gray;
-      margin: 0px auto 40px auto;
+      // font-size: 26px;
+  img {
+    width: 300px;
+      height: 200px;
+
+  }
+      // color: $light_gray;
+      // margin: 0px auto 0px auto;
       text-align: center;
-      font-weight: bold;
+      // font-weight: bold;
     }
   }
 

@@ -81,6 +81,7 @@ export default {
   position: relative;
   background-image: -webkit-linear-gradient(left, #57c6e1 42%, #944ef0 100%, #53d5f6 100%);
   box-shadow: 0 1px 4px rgba(4, 0, 41, 0.08);
+  margin-left: 6.5px;
 .app-breadcrumb {
   display: inline-block;
   font-size: 18px;
