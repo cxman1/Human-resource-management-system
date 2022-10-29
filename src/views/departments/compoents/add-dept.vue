@@ -1,28 +1,80 @@
 <template>
-  <el-dialog :title="showTitle" :visible="showDialog" @close="btnCancel">
+  <el-dialog
+    :title="showTitle"
+    :visible="showDialog"
+    @close="btnCancel"
+  >
     <!-- 弹层内容 -->
-    <el-form ref="deptForm" :model="formData" :rules="rules" label-width="120px">
-      <el-form-item label="部门名称" prop="name">
-        <el-input v-model="formData.name" style="width:80%" placeholder="1-50个字符" />
+    <el-form
+      ref="deptForm"
+      :model="formData"
+      :rules="rules"
+      label-width="120px"
+    >
+      <el-form-item
+        label="部门名称"
+        prop="name"
+      >
+        <el-input
+          v-model="formData.name"
+          style="width:80%"
+          placeholder="1-50个字符"
+        />
       </el-form-item>
-      <el-form-item label="部门编码" prop="code">
-        <el-input v-model="formData.code" style="width:80%" placeholder="1-50个字符" />
+      <el-form-item
+        label="部门编码"
+        prop="code"
+      >
+        <el-input
+          v-model="formData.code"
+          style="width:80%"
+          placeholder="1-50个字符"
+        />
       </el-form-item>
-      <el-form-item label="部门负责人" prop="manager">
-        <el-select v-model="formData.manager" style="width:80%" placeholder="请选择负责人" @focus="getEmployeeSimple">
-          <el-option v-for="item in peoples" :key="item.id" :label="item.username" :value="item.username" />
+      <el-form-item
+        label="部门负责人"
+        prop="manager"
+      >
+        <el-select
+          v-model="formData.manager"
+          style="width:80%"
+          placeholder="请选择负责人"
+          @focus="getEmployeeSimple"
+        >
+          <el-option
+            v-for="item in peoples"
+            :key="item.id"
+            :label="item.username"
+            :value="item.username"
+          />
         </el-select>
       </el-form-item>
-      <el-form-item label="部门介绍" prop="introduce">
-        <el-input v-model="formData.introduce" type="textarea" :rows="4" style="width:80%" placeholder="1-300个字符" />
+      <el-form-item
+        label="部门介绍"
+        prop="introduce"
+      >
+        <el-input
+          v-model="formData.introduce"
+          type="textarea"
+          :rows="4"
+          style="width:80%"
+          placeholder="1-300个字符"
+        />
       </el-form-item>
     </el-form>
     <!-- 放置居中的按钮 -->
-    <el-row slot="footer" type="flex" justify="center">
+    <el-row
+      slot="footer"
+      type="flex"
+      justify="center"
+    >
       <!--放置列 -->
       <el-col :span="8">
         <el-button @click="btnCancel">{{ $t('table.cancel') }}</el-button>
-        <el-button type="primary" @click="btnOK">{{ $t('table.confirm') }}</el-button>
+        <el-button
+          type="primary"
+          @click="btnOK"
+        >{{ $t('table.confirm') }}</el-button>
       </el-col>
     </el-row>
   </el-dialog>
@@ -81,23 +133,23 @@ export default {
         introduce: '' // 部门介绍
       },
       rules: {
-        name: [{ required: true, message: '部门名称不能为空', trigger: 'blur' },
+        name: [{ required: true, message: '部门名称不能为空', triger: 'blur' },
           {
-            min: 1, max: 50, message: '部门名称为1-50个字符', trigger: 'blur'
+            min: 1, max: 50, message: '部门名称为1-50个字符', triger: 'blur'
           }, {
-            // 同级部门不能出现重复的部门名称
-            trigger: 'blur',
+          // 同级部门不能出现重复的部门名称
+            triger: 'blur',
             validator: checkNameRepeat
           }], // 部门名称
-        code: [{ required: true, message: '部门编码不能为空', trigger: 'blur' }, {
-          min: 1, max: 50, message: '部门编码为1-50个字符', trigger: 'blur'
+        code: [{ required: true, message: '部门编码不能为空', triger: 'blur' }, {
+          min: 1, max: 50, message: '部门编码为1-50个字符', triger: 'blur'
         }, {
-          trigger: 'blur',
+          triger: 'blur',
           validator: checkCodeRepeat
         }], // 部门编码
-        manager: [{ required: true, message: '部门负责人不能为空', trigger: 'blur' }], // 部门管理者
-        introduce: [{ required: true, message: '部门介绍不能为空', trigger: 'blur' }, {
-          min: 1, max: 300, message: '部门介绍为1-300个字符', trigger: 'blur'
+        manager: [{ required: true, message: '部门负责人不能为空', triger: 'blur' }], // 部门管理者
+        introduce: [{ required: true, message: '部门介绍不能为空', triger: 'blur' }, {
+          min: 1, max: 300, message: '部门介绍为1-300个字符', triger: 'blur'
         }] // 部门介绍
       },
       peoples: []
@@ -105,12 +157,15 @@ export default {
   },
   computed: {
     showTitle() {
-      return this.formData.id ? '编辑部门' : '新增部门'
+      return this.formData.id ? '编辑部门' : '新增子部门'
     }
   },
   methods: {
     async getEmployeeSimple() {
       this.peoples = await getEmployeeSimple()
+    },
+    async  getDepartDetail(id) {
+      this.formData = await getDepartDetail(id)
     },
     btnOK() {
       this.$refs.deptForm.validate().then(() => {
@@ -126,22 +181,26 @@ export default {
     },
     btnCancel() {
       // 关闭弹层之前 应该 重置校验 并且还原数据
+      // this.formData = {
+      //   name: '', // 部门名称
+      //   code: '', // 部门编码
+      //   manager: '', // 部门管理者
+      //   introduce: '' // 部门介绍
+      // }
+      this.$refs.deptForm.resetFields() // 重置方法
+      this.$emit('update:showDialog', false)
+    },
+    resetFormdata() {
       this.formData = {
         name: '', // 部门名称
         code: '', // 部门编码
         manager: '', // 部门管理者
         introduce: '' // 部门介绍
       }
-      this.$refs.deptForm.resetFields() // 重置方法
-      this.$emit('update:showDialog', false)
-    },
-    async  getDepartDetail(id) {
-      this.formData = await getDepartDetail(id)
     }
   }
 }
 </script>
 
 <style>
-
 </style>

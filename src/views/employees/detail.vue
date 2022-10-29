@@ -26,7 +26,7 @@
               </el-tooltip>
             </el-row>
             <!-- <user-info /> -->
-            <!-- component中的is必须是动态变量 -->
+            <!-- component动态组件可以是任何组件的is必须是动态变量 -->
             <component :is="userInfo" />
           </el-tab-pane>
           <el-tab-pane label="岗位信息">

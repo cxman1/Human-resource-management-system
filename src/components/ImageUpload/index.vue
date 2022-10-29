@@ -55,6 +55,7 @@ export default {
     }
   },
   methods: {
+    // 点击预览事件
     preview(file) {
       this.imgUrl = file.url
       this.showDialog = true

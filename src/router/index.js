@@ -56,24 +56,28 @@ export const constantRoutes = [
     path: '/',
     component: Layout,
     redirect: '/dashboard',
-    children: [{
-      path: 'dashboard',
-      name: 'dashboard',
-      component: () => import('@/views/dashboard/index'),
-      meta: { title: '首页', icon: 'dashboard' }
-    }]
+    children: [
+      {
+        path: 'dashboard',
+        name: 'dashboard',
+        component: () => import('@/views/dashboard/index'),
+        meta: { title: '首页', icon: 'dashboard' }
+      }
+    ]
   },
   {
     path: '/import',
     component: Layout,
     hidden: true, // 该组件不在菜单中显示
-    children: [{
-      path: '',
-      component: () => import('@/views/import'),
-      meta: {
-        title: '导入'
+    children: [
+      {
+        path: '',
+        component: () => import('@/views/import'),
+        meta: {
+          title: '导入'
+        }
       }
-    }]
+    ]
   },
   userRouter
   // 404 page must be placed at the end !!!
@@ -90,12 +94,13 @@ export const asyncRoutes = [
   settingRouter,
   socialRouter
 ]
-const createRouter = () => new Router({
-  mode: 'history', // require service support
-  base: '/hrsaas/',
-  scrollBehavior: () => ({ y: 0 }),
-  routes: [...constantRoutes] // 动态路由和静态路由的临时合并
-})
+const createRouter = () =>
+  new Router({
+    mode: 'history', // require service support
+    base: '/hrsaas/',
+    scrollBehavior: () => ({ y: 0 }),
+    routes: [...constantRoutes, ...asyncRoutes] // 动态路由和静态路由的临时合并
+  })
 
 const router = createRouter()
 

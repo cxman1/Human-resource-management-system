@@ -1,8 +1,9 @@
 <template>
   <el-dialog title="分配角色" :visible="showRoleDialog" @close="btnCancel">
-    <!-- 内容 -->
+    <!-- 多选框组件需要 v-model双向绑定 -->
     <el-checkbox-group v-model="roleIds">
       <!-- 放置当前所有的角色内容 -->
+      <!-- 显示角色名称 存储角色id -->
       <el-checkbox v-for="item in list" :key="item.id" :label="item.id">{{ item.name }}</el-checkbox>
     </el-checkbox-group>
     <template #footer>
@@ -33,8 +34,8 @@ export default {
   },
   data() {
     return {
-      list: [],
-      roleIds: []
+      list: [], // 负责存储当前所有角色的id
+      roleIds: [] // 这个数组负责存储 当前用户所拥有的角色id
     }
   },
   created() {
@@ -47,18 +48,20 @@ export default {
       const { rows } = await getRoleList()
       this.list = rows
     },
-    // props的传值时异步的
+    // props的传值时异步的，此方法父组件调用
     async  getUserDetailById(id) {
       const { roleIds } = await getUserDetailById(id)
-      this.roleIds = roleIds // 将当前的用户角色赋值
+      this.roleIds = roleIds // 将当前的用户角色赋值给选中对象
     },
     // 分配角色
     async btnOK() {
-      await assignRoles({ id: this.userId, roleIds: this.roleIds })
+      await assignRoles({ id: this.userId, roleIds: this.roleIds }) // 保存用户的角色
       this.$emit('update:showRoleDialog', false)
     },
     btnCancel() {
+      this.roleIds = []
       this.$emit('update:showRoleDialog', false)
+      // this.$parent.showRoleDialog = false //两种方法都可以关闭弹层
     }
   }
 }

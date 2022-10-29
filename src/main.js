@@ -19,12 +19,13 @@ import checkPermission from '@/mixin/checkPermission'
 import i18n from '@/lang' // 引入i18n实例
 import '@/icons' // icon
 import '@/permission' // permission control
+
 // directives是所有指令的一个集合
-Object.keys(directives).forEach(key => {
-// key就是指令名称
+Object.keys(directives).forEach((key) => {
+  // key就是指令名称
   Vue.directive(key, directives[key])
 })
-Object.keys(filters).forEach(key => {
+Object.keys(filters).forEach((key) => {
   Vue.filter(key, filters[key])
 })
 Vue.use(Components) // 注册自己的自定义组件
@@ -44,5 +45,5 @@ new Vue({
   router,
   store,
   i18n,
-  render: h => h(App)
+  render: (h) => h(App)
 })

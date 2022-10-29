@@ -47,6 +47,7 @@ export default {
     Hamburger
   },
   data() {
+    // console.log(this)
     return {
       // 源代码   => 编译 => vue-cli来控制  => 浏览器
       // 当相对图片地址不确定的时候 需要用requrie来包裹

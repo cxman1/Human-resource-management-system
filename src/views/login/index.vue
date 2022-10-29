@@ -65,6 +65,7 @@ import { mapActions } from 'vuex'
 export default {
   name: 'Login',
   data() {
+    console.log(this)
     const validateMobile = (rule, value, callback) => {
       // value是否符合手机号格式
       validMobile(value) ? callback() : callback(new Error('手机号格式不正确'))
